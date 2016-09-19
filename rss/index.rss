@@ -1,1 +1,103 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Blog</title><description>Thoughts, stories and ideas.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 19 Sep 2016 07:19:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Data Structures: Queues and Stacks</title><description>&lt;p&gt;So much of writing code comes down to organizing data in a logical, efficient way, and data structures play a huge role in allowing us to do this effectively. Today, we’ll explore the difference between stacks and queues.&lt;/p&gt;</description><link>http://localhost:2368/data-structures-queues-and-stacks/</link><guid isPermaLink="false">e676abbb-5b96-4877-ad27-d9d8437fcd65</guid><dc:creator>Anna Zhao</dc:creator><pubDate>Mon, 19 Sep 2016 06:49:07 GMT</pubDate><content:encoded>&lt;p&gt;So much of writing code comes down to organizing data in a logical, efficient way, and data structures play a huge role in allowing us to do this effectively. Today, we’ll explore the difference between stacks and queues.&lt;/p&gt;</content:encoded></item></channel></rss>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Blog</title><description>Thoughts, stories and ideas.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 19 Sep 2016 08:50:58 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Blogging with Ghost and GitHub Pages: Part 1</title><description>&lt;p&gt;For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so. &lt;/p&gt;
+
+&lt;p&gt;Ghost provides an&lt;/p&gt;</description><link>http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/</link><guid isPermaLink="false">527f0eda-6fd4-4879-9115-5607cb8f4905</guid><dc:creator>Anna Zhao</dc:creator><pubDate>Mon, 19 Sep 2016 08:44:03 GMT</pubDate><content:encoded>&lt;p&gt;For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so. &lt;/p&gt;
+
+&lt;p&gt;Ghost provides an alternative option to the popular Medium. It allows for more customization and provides additional features, without losing the simplicity and content-focus that Medium users love. However, their cheapest hosting option is $19 a month - it won't break the bank, but it's a little pricey for someone who just wants to publish a post every once in a while. Luckily, they're generous enough to share their code for free! You just need to find a way to host your blog. This is where GH pages comes in. &lt;/p&gt;
+
+&lt;p&gt;(Not sure if it's worth the trouble? You can try out Ghost's blogging platform with a free trial before jumping into setup!)&lt;/p&gt;
+
+&lt;h3 id="requirements"&gt;Requirements&lt;/h3&gt;
+
+&lt;p&gt;We'll assume that you have the following: &lt;br&gt;
+1) A GitHub account - you'll need this to use GH pages. &lt;br&gt;
+2) Node.js, npm, Homebrew, Xcode installed. &lt;br&gt;
+3) These steps are written for Mac OSX. &lt;/p&gt;
+
+&lt;p&gt;There are tons of resources on these things, so we won't cover them here. We'll also assume some basic knowledge of the command line, since not only will we be using that to set everything up, but we'll also use it in the future to make changes to our blog.&lt;/p&gt;
+
+&lt;h3 id="letsgetstarted"&gt;Let's get started!&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Step #1: Installing Python Package Index&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In your Terminal, type the following command:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo easy_install pip 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step #2: Confirm correct version of Node&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ghost only supports &lt;a href="http://support.ghost.org/supported-node-versions/"&gt;certain versions of Node&lt;/a&gt;, so you'll need to ensure you're using the correct version before moving on. In your terminal, type in the following to check the version you're using:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ node -v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see the version number in your terminal. Ghost currently supports versions 0.10.x, 0.12.x and 4.2.0+ (up to, not including 5.0.0) only, so if your version is anything else, we'll need to change that. Luckily, there is &lt;a href="https://github.com/tj/n"&gt;n&lt;/a&gt; - an easy-to-use, interactive Node version manager. &lt;/p&gt;
+
+&lt;p&gt;To install n, type the following in the terminal:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install -g n
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, install Node.js version 4.2.0.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ n 4.2.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, we can check the version and see the correct version installed.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ node -v
+&amp;gt; v4.2.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step #3: Downloading Ghost&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is easy - just &lt;a href="https://ghost.org/developers/"&gt;download Ghost&lt;/a&gt; from their website! When the download finishes, unzip the file. Place it wherever you'd like, and rename the directory if you wish. We'll rename ours 'ghost-setup' to clarify that this &lt;em&gt;isn't&lt;/em&gt; where our blog posts will go. &lt;/p&gt;
+
+&lt;p&gt;Now, we can run npm install in this directory. If we're using the correct version of Node, we shouldn't run into any problems here.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ npm install 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step #5: Installing Buster&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Buster was created to help you generate a static site using Ghost. That's mostly a fancy way of saying it makes your local changes appear. Installing it with the following commands in your terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ pip install buster 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Step #6: Setting up your GitHub pages repository&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;Create a new GitHub repo, titled &lt;strong&gt;username.github.io&lt;/strong&gt;. (Replace &lt;em&gt;username&lt;/em&gt; with your exact GitHub username!) &lt;/p&gt;
+
+&lt;p&gt;This will automatically create a GitHub page for you, with the url https://&lt;em&gt;username&lt;/em&gt;.github.io/. For further explanation on this, you can check out GitHub's explanation of this &lt;a href="https://pages.github.com"&gt;here&lt;/a&gt;. Note that Buster only works if if we &lt;em&gt;don't do anything to our repo! Just create it, and leave it there for now.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step #7: Creating static files&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We'll need to create a folder now to contain our actual blog files. (Remember, we're using our directory &lt;em&gt;ghost-setup&lt;/em&gt; to contain the ghost files, but not our posts.) Let's name this &lt;em&gt;ghost-blog&lt;/em&gt; to differentiate. &lt;/p&gt;
+
+&lt;p&gt;Inside this directory, run this command:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ buster setup 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You'll be asked for your GitHub repo - enter in the following, replacing &lt;em&gt;username&lt;/em&gt; with your GitHub username.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://github.com/username/username.github.io.git`  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will automatically create a folder in your directory titled "static", which will contain all the files that make your blog. &lt;/p&gt;
+
+&lt;p&gt;Now, run this command:  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ buster generate --domain=http://localhost:2368
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Your static folder should be in sync with your GitHub repo (magic!). Don't worry about all the complexities here! &lt;/p&gt;
+
+&lt;h3 id="alldone"&gt;All done!&lt;/h3&gt;
+
+&lt;p&gt;Your blog should be all set up! You can confirm this by going to your new GitHub page: https://&lt;em&gt;username&lt;/em&gt;.github.io/. You should see Ghost's default layout, and an example post they've published for you. &lt;/p&gt;
+
+&lt;p&gt;In the next post, we'll cover how to actually use what we've done to start blogging!&lt;/p&gt;
+
+&lt;p&gt;Click &lt;a href="http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/"&gt;here&lt;/a&gt; to read part 2 (Not completed yet! Link will be there when it is.)&lt;/p&gt;</content:encoded></item></channel></rss>

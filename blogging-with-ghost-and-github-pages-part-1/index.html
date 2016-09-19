@@ -1,0 +1,257 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Blogging with Ghost and GitHub Pages: Part 1</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=c5fa6deed3">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Blogging with Ghost and GitHub Pages: Part 1">
+    <meta property="og:description" content="For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so.  Ghost provides an">
+    <meta property="og:url" content="http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/">
+    <meta property="article:published_time" content="2016-09-19T08:44:03.000Z">
+    <meta property="article:modified_time" content="2016-09-19T08:50:35.000Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blogging with Ghost and GitHub Pages: Part 1">
+    <meta name="twitter:description" content="For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so.  Ghost provides an">
+    <meta name="twitter:url" content="http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Anna Zhao">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Blog",
+        "logo": "http://localhost:2368/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Anna Zhao",
+        "url": "http://localhost:2368/author/anna/",
+        "sameAs": []
+    },
+    "headline": "Blogging with Ghost and GitHub Pages: Part 1",
+    "url": "http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/",
+    "datePublished": "2016-09-19T08:44:03.000Z",
+    "dateModified": "2016-09-19T08:50:35.000Z",
+    "description": "For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so.  Ghost provides an",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11">
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="../rss/index.html">
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-home" role="presentation"><a href="../">Home</a></li>
+    </ul>
+        <a class="subscribe-button icon-feed" href="../rss/index.rss">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Blogging with Ghost and GitHub Pages: Part 1</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-09-19">19 September 2016</time> 
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so. </p>
+
+<p>Ghost provides an alternative option to the popular Medium. It allows for more customization and provides additional features, without losing the simplicity and content-focus that Medium users love. However, their cheapest hosting option is $19 a month - it won't break the bank, but it's a little pricey for someone who just wants to publish a post every once in a while. Luckily, they're generous enough to share their code for free! You just need to find a way to host your blog. This is where GH pages comes in. </p>
+
+<p>(Not sure if it's worth the trouble? You can try out Ghost's blogging platform with a free trial before jumping into setup!)</p>
+
+<h3 id="requirements">Requirements</h3>
+
+<p>We'll assume that you have the following: <br>
+1) A GitHub account - you'll need this to use GH pages. <br>
+2) Node.js, npm, Homebrew, Xcode installed. <br>
+3) These steps are written for Mac OSX. </p>
+
+<p>There are tons of resources on these things, so we won't cover them here. We'll also assume some basic knowledge of the command line, since not only will we be using that to set everything up, but we'll also use it in the future to make changes to our blog.</p>
+
+<h3 id="letsgetstarted">Let's get started!</h3>
+
+<p><strong>Step #1: Installing Python Package Index</strong></p>
+
+<p>In your Terminal, type the following command:  </p>
+
+<pre><code>$ sudo easy_install pip 
+</code></pre>
+
+<p><strong>Step #2: Confirm correct version of Node</strong></p>
+
+<p>Ghost only supports <a href="http://support.ghost.org/supported-node-versions/">certain versions of Node</a>, so you'll need to ensure you're using the correct version before moving on. In your terminal, type in the following to check the version you're using:  </p>
+
+<pre><code>$ node -v
+</code></pre>
+
+<p>You should see the version number in your terminal. Ghost currently supports versions 0.10.x, 0.12.x and 4.2.0+ (up to, not including 5.0.0) only, so if your version is anything else, we'll need to change that. Luckily, there is <a href="https://github.com/tj/n">n</a> - an easy-to-use, interactive Node version manager. </p>
+
+<p>To install n, type the following in the terminal:  </p>
+
+<pre><code>$ npm install -g n
+</code></pre>
+
+<p>Then, install Node.js version 4.2.0.  </p>
+
+<pre><code>$ n 4.2.0
+</code></pre>
+
+<p>Now, we can check the version and see the correct version installed.  </p>
+
+<pre><code>$ node -v
+&gt; v4.2.0
+</code></pre>
+
+<p><strong>Step #3: Downloading Ghost</strong></p>
+
+<p>This is easy - just <a href="https://ghost.org/developers/">download Ghost</a> from their website! When the download finishes, unzip the file. Place it wherever you'd like, and rename the directory if you wish. We'll rename ours 'ghost-setup' to clarify that this <em>isn't</em> where our blog posts will go. </p>
+
+<p>Now, we can run npm install in this directory. If we're using the correct version of Node, we shouldn't run into any problems here.  </p>
+
+<pre><code>$ npm install 
+</code></pre>
+
+<p><strong>Step #5: Installing Buster</strong></p>
+
+<p>Buster was created to help you generate a static site using Ghost. That's mostly a fancy way of saying it makes your local changes appear. Installing it with the following commands in your terminal:</p>
+
+<pre><code>$ pip install buster 
+</code></pre>
+
+<p><strong>Step #6: Setting up your GitHub pages repository</strong> </p>
+
+<p>Create a new GitHub repo, titled <strong>username.github.io</strong>. (Replace <em>username</em> with your exact GitHub username!) </p>
+
+<p>This will automatically create a GitHub page for you, with the url https://<em>username</em>.github.io/. For further explanation on this, you can check out GitHub's explanation of this <a href="https://pages.github.com">here</a>. Note that Buster only works if if we <em>don't do anything to our repo! Just create it, and leave it there for now.</em></p>
+
+<p><strong>Step #7: Creating static files</strong></p>
+
+<p>We'll need to create a folder now to contain our actual blog files. (Remember, we're using our directory <em>ghost-setup</em> to contain the ghost files, but not our posts.) Let's name this <em>ghost-blog</em> to differentiate. </p>
+
+<p>Inside this directory, run this command:  </p>
+
+<pre><code>$ buster setup 
+</code></pre>
+
+<p>You'll be asked for your GitHub repo - enter in the following, replacing <em>username</em> with your GitHub username.  </p>
+
+<pre><code>https://github.com/username/username.github.io.git`  
+</code></pre>
+
+<p>This will automatically create a folder in your directory titled "static", which will contain all the files that make your blog. </p>
+
+<p>Now, run this command:  </p>
+
+<pre><code>$ buster generate --domain=http://localhost:2368
+</code></pre>
+
+<p>Your static folder should be in sync with your GitHub repo (magic!). Don't worry about all the complexities here! </p>
+
+<h3 id="alldone">All done!</h3>
+
+<p>Your blog should be all set up! You can confirm this by going to your new GitHub page: https://<em>username</em>.github.io/. You should see Ghost's default layout, and an example post they've published for you. </p>
+
+<p>In the next post, we'll cover how to actually use what we've done to start blogging!</p>
+
+<p>Click <a href="index.html">here</a> to read part 2 (Not completed yet! Link will be there when it is.)</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/anna/">Anna Zhao</a></h4>
+
+                    <p>Read <a href="../author/anna/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Blogging%20with%20Ghost%20and%20GitHub%20Pages%3A%20Part%201&amp;url=http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../">Blog</a> © 2016</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=c5fa6deed3"></script>
+    <script type="text/javascript" src="../assets/js/index.js?v=c5fa6deed3"></script>
+
+</body>
