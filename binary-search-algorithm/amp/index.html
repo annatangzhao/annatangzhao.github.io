@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Blogging with Ghost and GitHub Pages: Part 1</title>
+    <title>Binary Search Algorithm</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -15,15 +15,15 @@
     
     <meta property="og:site_name" content="Blog">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Blogging with Ghost and GitHub Pages: Part 1">
-    <meta property="og:description" content="For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so.  Ghost provides an">
-    <meta property="og:url" content="http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/">
-    <meta property="article:published_time" content="2016-09-19T08:44:03.000Z">
-    <meta property="article:modified_time" content="2016-09-19T08:50:35.000Z">
+    <meta property="og:title" content="Binary Search Algorithm">
+    <meta property="og:description" content="Binary search trees can be wonderfully efficient when it comes to finding a specific value. Arrays, objects, and many others potentially require iterating over each value. Binary search trees, however, are able to reduce the remaining elements left to search by a factor of 2 each time.  This speedy search">
+    <meta property="og:url" content="http://localhost:2368/binary-search-algorithm/">
+    <meta property="article:published_time" content="2016-09-22T16:59:00.000Z">
+    <meta property="article:modified_time" content="2016-09-22T16:59:00.000Z">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Blogging with Ghost and GitHub Pages: Part 1">
-    <meta name="twitter:description" content="For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so.  Ghost provides an">
-    <meta name="twitter:url" content="http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/">
+    <meta name="twitter:title" content="Binary Search Algorithm">
+    <meta name="twitter:description" content="Binary search trees can be wonderfully efficient when it comes to finding a specific value. Arrays, objects, and many others potentially require iterating over each value. Binary search trees, however, are able to reduce the remaining elements left to search by a factor of 2 each time.  This speedy search">
+    <meta name="twitter:url" content="http://localhost:2368/binary-search-algorithm/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Anna Zhao">
     
@@ -42,11 +42,11 @@
         "url": "http://localhost:2368/author/anna/",
         "sameAs": []
     },
-    "headline": "Blogging with Ghost and GitHub Pages: Part 1",
-    "url": "http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/",
-    "datePublished": "2016-09-19T08:44:03.000Z",
-    "dateModified": "2016-09-19T08:50:35.000Z",
-    "description": "For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so.  Ghost provides an",
+    "headline": "Binary Search Algorithm",
+    "url": "http://localhost:2368/binary-search-algorithm/",
+    "datePublished": "2016-09-22T16:59:00.000Z",
+    "dateModified": "2016-09-22T16:59:00.000Z",
+    "description": "Binary search trees can be wonderfully efficient when it comes to finding a specific value. Arrays, objects, and many others potentially require iterating over each value. Binary search trees, however, are able to reduce the remaining elements left to search by a factor of 2 each time.  This speedy search",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -839,115 +839,178 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Blogging with Ghost and GitHub Pages: Part 1</h1>
+                <h1 class="post-title">Binary Search Algorithm</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../author/anna/">Anna Zhao</a></p>
-                    <time class="post-date" datetime="2016-09-19">2016-09-19</time>
+                    <time class="post-date" datetime="2016-09-22">2016-09-22</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so. </p>
+                <p><strong>Binary search trees can be wonderfully efficient when it comes to finding a specific value.</strong> Arrays, objects, and many others potentially require iterating over each value. Binary search trees, however, are able to reduce the remaining elements left to search by a factor of 2 each time. </p>
 
-<p>Ghost provides an alternative option to the popular Medium. It allows for more customization and provides additional features, without losing the simplicity and content-focus that Medium users love. However, their cheapest hosting option is $19 a month - it won't break the bank, but it's a little pricey for someone who just wants to publish a post every once in a while. Luckily, they're generous enough to share their code for free! You just need to find a way to host your blog. This is where GH pages comes in. </p>
+<p><strong>This speedy search comes with trade-offs.</strong> For one, the data must follow some sort of logical sequence. We must be able to sort the data in some way, where each item in our tree is "less" or "greater" than another, by some common rule. Additionally, our binary search tree isn't able to insert values as quickly as we can in an array or object. </p>
 
-<p>(Not sure if it's worth the trouble? You can try out Ghost's blogging platform with a free trial before jumping into setup!)</p>
+<p><strong>Despite these limitations, the binary search tree still proves to be an incredibly powerful way to organize data.</strong> </p>
 
-<h3 id="requirements">Requirements</h3>
+<p>We can note now that the efficiency of this data structure lies not in its tree-like structure, but in the "binary search" aspect. <strong>That is, whenever we have sorted data, we can in theory use binary search.</strong> </p>
 
-<p>We'll assume that you have the following: <br>
-1) A GitHub account - you'll need this to use GH pages. <br>
-2) Node.js, npm, Homebrew, Xcode installed. <br>
-3) These steps are written for Mac OSX. </p>
+<p><strong>How would we apply this to an array?</strong></p>
 
-<p>There are tons of resources on these things, so we won't cover them here. We'll also assume some basic knowledge of the command line, since not only will we be using that to set everything up, but we'll also use it in the future to make changes to our blog.</p>
+<p>Let's say we have an array of 10 items. For simplicity, we'll make the values equal to the indices. </p>
 
-<h3 id="letsgetstarted">Let's get started!</h3>
+<p>Our array looks like this: <br>
+<code>var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></p>
 
-<p><strong>Step #1: Installing Python Package Index</strong></p>
+<p>Now, let's say we want to get the index where <code>array[index] === 9</code>. (Conveniently, this is at the index 9 as well! What a coincidence.). </p>
 
-<p>In your Terminal, type the following command:  </p>
+<p><strong>One way we could do this would be to iterate over the array.</strong> We would check each element to see if we find the target value. If we do, we'll return the index. If we don't, we'll keep searching. Maybe we'd use a for loop, like this: </p>
 
-<pre><code>$ sudo easy_install pip 
+<pre><code>for (var i = 0; i &lt; array.length; i++) {  
+  if (array[i] === 7) {
+    return i
+  }
+}
 </code></pre>
 
-<p><strong>Step #2: Confirm correct version of Node</strong></p>
+<p>In this case, if the value we want is the first one in the array, then we'd only have to check one item. How lucky! But what if our value is the last one? We'd have to check the entire array. We can say that in the worst case, we'd check n items, where n is the length of the array. <strong>On average, we'd check n/2 times.</strong></p>
 
-<p>Ghost only supports <a href="http://support.ghost.org/supported-node-versions/">certain versions of Node</a>, so you'll need to ensure you're using the correct version before moving on. In your terminal, type in the following to check the version you're using:  </p>
+<p><strong>Now what if we use a binary search?</strong></p>
 
-<pre><code>$ node -v
+<p><strong>Let's first take the midpoint of the data.</strong> Here, we have an even number of items, and can either use 4 or 5. For consistency, let's say we'll always use the lower number when we have an even number. We can use the average of our start and end point to find our midpoint. <strong>Here, with our lastIndex being 9 and our firstIndex being 0, our midpoint is 4.</strong></p>
+
+<p><strong>Now, let's check if our midpoint is equal to the value we're looking for.</strong> If it were, we'd be done! In this case, it isn't, and a simple comparison tells us our midpoint is too low.</p>
+
+<p>Now comes the beauty of binary search. <strong>What information has our last comparison given us? By knowing that our midpoint was too low, we now know that any index lower than ours will also be too low.</strong> Now we've saved ourselves the time of checking any of those values! (Remember, this isn't just because our values happen to match our indices here! This will apply as long as data is sorted). </p>
+
+<p><strong>This time, let's only check the values between 5 and 9.</strong> Let's set our midpoint to the halfway point between that, using the same method again. By using 5 as our start point and 9 as our end point, <strong>we get 7 as our new midpoint</strong>.</p>
+
+<p><strong>Once again, let's check if our midpoint matches. It seems like 7 is still too low, so let's do this again with the remaining values, 8 and 9.</strong> (Notice this time we've ruled out 5 and 6).</p>
+
+<p>When we take 8 as our start point and 9 as our end point, <strong>we get 8 as our midpoint</strong>. <strong>We're still too low!</strong> Let's take the remaining values. But wait! <strong>It would seem there is only one value left.</strong></p>
+
+<p><strong>This time, our firstIndex and lastIndex are the same - both 9.</strong> Although we could repeat the process of checking the midpoint and produce the same result (the average of 9 and 9 is 9), let's take the easy route and just <strong>check our last remaining value</strong>. As it turns out, this is the value we were looking for! (What if it weren't? That would mean the value doesn't exist in the collection, and we can handle this accordingly). </p>
+
+<p><strong>Notice in this case, we searched until there was only one remaining value - at no earlier point did we get lucky and hit the target with our midpoint.</strong> We can say that this is binary search's version of the worst case. And yet, we only took <strong>4 steps</strong> to find our value. This is much better than having to look through 10 items. </p>
+
+<p>Let's dig a little deeper, to prove that our code in fact does check each item. <strong>After all, this all falls apart if an item gets overlooked. We need to be sure we've done a complete search.</strong> </p>
+
+<p><strong>What if 4 had been too high?</strong> We would then check the values between the indices 0 and 3. The midpoint here is 1 (1.5 rounded down). If 1 is too high, we would check 0 - the final value. If 1 is too low, we would check 2 - the final value as well. <strong>It would seem that we in fact do check each value.</strong></p>
+
+<p><strong>You may hypothesize that starting with an odd number of items in our array may make a difference.</strong> What if we had started with 5 items? </p>
+
+<p>We would check the index of 3. If this were too low, we would check the items between 4 and 5. If it were too high, we would check the items between 0 and 2. <strong>We quickly see that the starting number of items makes to difference, as our problem quickly reduces to a similar pattern.</strong></p>
+
+<p>This final conclusion here - that our problem quickly reduces in to a smaller version of the same problem - makes it the perfect candidate for recursion. <strong>Let's try implementing this into a recursive function, and seeing how it works.</strong></p>
+
+<p>First, we know that our function will need to take an <strong>array</strong>, which we will search through, and a <strong>target</strong>, which we will search for. Let's add these as <strong>arguments</strong>.</p>
+
+<p>Next, we know that we will continuously look through smaller portions of the array. We may want to specify the <strong>start and end points</strong> of section of the array that we'll search, so let's add those as arguments too.  </p>
+
+<pre><code>var binarySearch = function (array, target, start, end) {
+
+}
 </code></pre>
 
-<p>You should see the version number in your terminal. Ghost currently supports versions 0.10.x, 0.12.x and 4.2.0+ (up to, not including 5.0.0) only, so if your version is anything else, we'll need to change that. Luckily, there is <a href="https://github.com/tj/n">n</a> - an easy-to-use, interactive Node version manager. </p>
+<p>Next, we know that when the <strong>start and end indices are the same</strong>, we only have 1 item left to check. In this case, we don't need to recurse any further, so let's set this as our base case. Here, we'll <strong>check if the value is our target</strong>. If it is, we'll return our index. If not, we'll return -1, to denote that our value wasn't found.  </p>
 
-<p>To install n, type the following in the terminal:  </p>
-
-<pre><code>$ npm install -g n
+<pre><code>var binarySearch = function (array, target, start, end) {  
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+}
 </code></pre>
 
-<p>Then, install Node.js version 4.2.0.  </p>
+<p>Now, let's tackle the heart of the problem - the recursive case. We know that the first thing we want to do is <strong>find the midpoint</strong>, so let's do that. Remember, we're going to take the average of the start and end points, and round it down using Math.floor to get a whole number. We'll then <strong>check if the midpoint of the array is the target</strong>, and return the index if it is.  </p>
 
-<pre><code>$ n 4.2.0
+<pre><code>var binarySearch = function (array, target, start, end) {  
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+
+  var midpoint = Math.floor((start + end)/2)
+  if (array[midpoint] === target) {
+    return midpoint;
+  }
+}
 </code></pre>
 
-<p>Now, we can check the version and see the correct version installed.  </p>
+<p>If our midpoint isn't the target, we'll now need to check the rest of our array. Remember, whether we check the left or right of the array depends on whether our midpoint is too high, or too low. This means we'll first need to make the comparison. Then, let's set up an <strong>if/else statement</strong> to tackle the two scenarios accordingly. </p>
 
-<pre><code>$ node -v
-&gt; v4.2.0
+<p>(Note: the condition of the <code>else if</code> is technically unnecessary - if we have done everything correctly, an <code>else</code> statement should suffice. However, we include this for clarity.)</p>
+
+<pre><code>var binarySearch = function (array, target, start, end) {  
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+
+  var midpoint = Math.floor((start + end)/2)
+  if (array[midpoint] === target) {
+    return midpoint;
+  } else {
+    if (array[midpoint] &gt; target) {
+
+    } else if (array[midpoint] &lt; target) {
+
+    }
+  }
+}
 </code></pre>
 
-<p><strong>Step #3: Downloading Ghost</strong></p>
+<p>The final step is to decide what to do in each case. We know that in both cases, <strong>we want to check a smaller portion of the array</strong>. Perhaps a recursive call to the same function can take care of this for us. </p>
 
-<p>This is easy - just <a href="https://ghost.org/developers/">download Ghost</a> from their website! When the download finishes, unzip the file. Place it wherever you'd like, and rename the directory if you wish. We'll rename ours 'ghost-setup' to clarify that this <em>isn't</em> where our blog posts will go. </p>
+<p>Let's add <strong>recursive function calls, adjusting the start and end points accordingly</strong>. If our midpoint was too high, we will want to check the lower half of the array, starting from our last start point, up to (but not including) the midpoint. If our midpoint was too low, we will want to check the higher half of the array, starting from after the midpoint to our last end point.</p>
 
-<p>Now, we can run npm install in this directory. If we're using the correct version of Node, we shouldn't run into any problems here.  </p>
+<p>Lastly, we'll want to make sure that the first time the function is run, we use the entire array. Let's add in <strong>default values</strong>, so we don't need to explicitly pass them in each time.  </p>
 
-<pre><code>$ npm install 
+<pre><code>var binarySearch = function (array, target, start, end) {  
+  start = start || 0;
+  end = end || array.length-1;
+
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+
+  var midpoint = Math.floor((start + end)/2)
+  if (array[midpoint] === target) {
+    return midpoint;
+  } else {
+    if (array[midpoint] &gt; target) {
+      return binarySearch(array, target, start, midpoint-1) 
+    } else if (array[midpoint] &lt; target) {
+      return binarySearch(array, target, midpoint+1, end) 
+    }
+  }
+}
 </code></pre>
 
-<p><strong>Step #5: Installing Buster</strong></p>
+<p>All done! Now, each time our function recursively calls itself, we cut down on the elements we still need to check by a factor of 2. We will do this until we either have found our target, or have one element left.</p>
 
-<p>Buster was created to help you generate a static site using Ghost. That's mostly a fancy way of saying it makes your local changes appear. Installing it with the following commands in your terminal:</p>
+<p>Let's run our function with some arrays to test it out! </p>
 
-<pre><code>$ pip install buster 
+<pre><code>binarySearch([1, 3, 5, 6, 8], 3); // 1  
+binarySearch([1, 3, 5, 6, 8], 8); // 4  
+binarySearch([23, 24, 27, 31, 35, 39], 23); // 0  
+binarySearch([23, 24, 27, 31, 35, 39], 31); // 3  
 </code></pre>
 
-<p><strong>Step #6: Setting up your GitHub pages repository</strong> </p>
-
-<p>Create a new GitHub repo, titled <strong>username.github.io</strong>. (Replace <em>username</em> with your exact GitHub username!) </p>
-
-<p>This will automatically create a GitHub page for you, with the url https://<em>username</em>.github.io/. For further explanation on this, you can check out GitHub's explanation of this <a href="https://pages.github.com">here</a>. Note that Buster only works if if we <em>don't do anything to our repo! Just create it, and leave it there for now.</em></p>
-
-<p><strong>Step #7: Creating static files</strong></p>
-
-<p>We'll need to create a folder now to contain our actual blog files. (Remember, we're using our directory <em>ghost-setup</em> to contain the ghost files, but not our posts.) Let's name this <em>ghost-blog</em> to differentiate. </p>
-
-<p>Inside this directory, run this command:  </p>
-
-<pre><code>$ buster setup 
-</code></pre>
-
-<p>You'll be asked for your GitHub repo - enter in the following, replacing <em>username</em> with your GitHub username.  </p>
-
-<pre><code>https://github.com/username/username.github.io.git`  
-</code></pre>
-
-<p>This will automatically create a folder in your directory titled "static", which will contain all the files that make your blog. </p>
-
-<p>Now, run this command:  </p>
-
-<pre><code>$ buster generate --domain=http://localhost:2368
-</code></pre>
-
-<p>Your static folder should be in sync with your GitHub repo (magic!). Don't worry about all the complexities here! </p>
-
-<h3 id="alldone">All done!</h3>
-
-<p>Your blog should be all set up! You can confirm this by going to your new GitHub page: https://<em>username</em>.github.io/. You should see Ghost's default layout, and an example post they've published for you. </p>
-
-<p>In the next post, we'll cover how to actually use what we've done to start blogging!</p>
-
-<p>Click <a href="../">here</a> to read part 2 (Not completed yet! Link will be there when it is.)</p>
+<p><strong>Success!</strong></p>
 
             </section>
 

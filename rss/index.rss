@@ -1,4 +1,169 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Blog</title><description>Blog</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 19 Sep 2016 09:09:33 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Blogging with Ghost and GitHub Pages: Part 1</title><description>&lt;p&gt;For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so. &lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Blog</title><description>Blog</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 23 Sep 2016 23:59:39 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Binary Search Algorithm</title><description>&lt;p&gt;&lt;strong&gt;Binary search trees can be wonderfully efficient when it comes to finding a specific value.&lt;/strong&gt; Arrays, objects, and many others potentially require iterating over each value. Binary search trees, however, are able to reduce the remaining elements left to search by a factor of 2 each time. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This speedy search&lt;/strong&gt;&lt;/p&gt;</description><link>http://localhost:2368/binary-search-algorithm/</link><guid isPermaLink="false">f20dbc6e-1084-4e2d-bd2f-a472b6dd6fb0</guid><dc:creator>Anna Zhao</dc:creator><pubDate>Thu, 22 Sep 2016 16:59:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Binary search trees can be wonderfully efficient when it comes to finding a specific value.&lt;/strong&gt; Arrays, objects, and many others potentially require iterating over each value. Binary search trees, however, are able to reduce the remaining elements left to search by a factor of 2 each time. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This speedy search comes with trade-offs.&lt;/strong&gt; For one, the data must follow some sort of logical sequence. We must be able to sort the data in some way, where each item in our tree is "less" or "greater" than another, by some common rule. Additionally, our binary search tree isn't able to insert values as quickly as we can in an array or object. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Despite these limitations, the binary search tree still proves to be an incredibly powerful way to organize data.&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;We can note now that the efficiency of this data structure lies not in its tree-like structure, but in the "binary search" aspect. &lt;strong&gt;That is, whenever we have sorted data, we can in theory use binary search.&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How would we apply this to an array?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Let's say we have an array of 10 items. For simplicity, we'll make the values equal to the indices. &lt;/p&gt;
+
+&lt;p&gt;Our array looks like this: &lt;br&gt;
+&lt;code&gt;var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, let's say we want to get the index where &lt;code&gt;array[index] === 9&lt;/code&gt;. (Conveniently, this is at the index 9 as well! What a coincidence.). &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;One way we could do this would be to iterate over the array.&lt;/strong&gt; We would check each element to see if we find the target value. If we do, we'll return the index. If we don't, we'll keep searching. Maybe we'd use a for loop, like this: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for (var i = 0; i &amp;lt; array.length; i++) {  
+  if (array[i] === 7) {
+    return i
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case, if the value we want is the first one in the array, then we'd only have to check one item. How lucky! But what if our value is the last one? We'd have to check the entire array. We can say that in the worst case, we'd check n items, where n is the length of the array. &lt;strong&gt;On average, we'd check n/2 times.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Now what if we use a binary search?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Let's first take the midpoint of the data.&lt;/strong&gt; Here, we have an even number of items, and can either use 4 or 5. For consistency, let's say we'll always use the lower number when we have an even number. We can use the average of our start and end point to find our midpoint. &lt;strong&gt;Here, with our lastIndex being 9 and our firstIndex being 0, our midpoint is 4.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Now, let's check if our midpoint is equal to the value we're looking for.&lt;/strong&gt; If it were, we'd be done! In this case, it isn't, and a simple comparison tells us our midpoint is too low.&lt;/p&gt;
+
+&lt;p&gt;Now comes the beauty of binary search. &lt;strong&gt;What information has our last comparison given us? By knowing that our midpoint was too low, we now know that any index lower than ours will also be too low.&lt;/strong&gt; Now we've saved ourselves the time of checking any of those values! (Remember, this isn't just because our values happen to match our indices here! This will apply as long as data is sorted). &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This time, let's only check the values between 5 and 9.&lt;/strong&gt; Let's set our midpoint to the halfway point between that, using the same method again. By using 5 as our start point and 9 as our end point, &lt;strong&gt;we get 7 as our new midpoint&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Once again, let's check if our midpoint matches. It seems like 7 is still too low, so let's do this again with the remaining values, 8 and 9.&lt;/strong&gt; (Notice this time we've ruled out 5 and 6).&lt;/p&gt;
+
+&lt;p&gt;When we take 8 as our start point and 9 as our end point, &lt;strong&gt;we get 8 as our midpoint&lt;/strong&gt;. &lt;strong&gt;We're still too low!&lt;/strong&gt; Let's take the remaining values. But wait! &lt;strong&gt;It would seem there is only one value left.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This time, our firstIndex and lastIndex are the same - both 9.&lt;/strong&gt; Although we could repeat the process of checking the midpoint and produce the same result (the average of 9 and 9 is 9), let's take the easy route and just &lt;strong&gt;check our last remaining value&lt;/strong&gt;. As it turns out, this is the value we were looking for! (What if it weren't? That would mean the value doesn't exist in the collection, and we can handle this accordingly). &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Notice in this case, we searched until there was only one remaining value - at no earlier point did we get lucky and hit the target with our midpoint.&lt;/strong&gt; We can say that this is binary search's version of the worst case. And yet, we only took &lt;strong&gt;4 steps&lt;/strong&gt; to find our value. This is much better than having to look through 10 items. &lt;/p&gt;
+
+&lt;p&gt;Let's dig a little deeper, to prove that our code in fact does check each item. &lt;strong&gt;After all, this all falls apart if an item gets overlooked. We need to be sure we've done a complete search.&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What if 4 had been too high?&lt;/strong&gt; We would then check the values between the indices 0 and 3. The midpoint here is 1 (1.5 rounded down). If 1 is too high, we would check 0 - the final value. If 1 is too low, we would check 2 - the final value as well. &lt;strong&gt;It would seem that we in fact do check each value.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You may hypothesize that starting with an odd number of items in our array may make a difference.&lt;/strong&gt; What if we had started with 5 items? &lt;/p&gt;
+
+&lt;p&gt;We would check the index of 3. If this were too low, we would check the items between 4 and 5. If it were too high, we would check the items between 0 and 2. &lt;strong&gt;We quickly see that the starting number of items makes to difference, as our problem quickly reduces to a similar pattern.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This final conclusion here - that our problem quickly reduces in to a smaller version of the same problem - makes it the perfect candidate for recursion. &lt;strong&gt;Let's try implementing this into a recursive function, and seeing how it works.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;First, we know that our function will need to take an &lt;strong&gt;array&lt;/strong&gt;, which we will search through, and a &lt;strong&gt;target&lt;/strong&gt;, which we will search for. Let's add these as &lt;strong&gt;arguments&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, we know that we will continuously look through smaller portions of the array. We may want to specify the &lt;strong&gt;start and end points&lt;/strong&gt; of section of the array that we'll search, so let's add those as arguments too.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var binarySearch = function (array, target, start, end) {
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, we know that when the &lt;strong&gt;start and end indices are the same&lt;/strong&gt;, we only have 1 item left to check. In this case, we don't need to recurse any further, so let's set this as our base case. Here, we'll &lt;strong&gt;check if the value is our target&lt;/strong&gt;. If it is, we'll return our index. If not, we'll return -1, to denote that our value wasn't found.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var binarySearch = function (array, target, start, end) {  
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, let's tackle the heart of the problem - the recursive case. We know that the first thing we want to do is &lt;strong&gt;find the midpoint&lt;/strong&gt;, so let's do that. Remember, we're going to take the average of the start and end points, and round it down using Math.floor to get a whole number. We'll then &lt;strong&gt;check if the midpoint of the array is the target&lt;/strong&gt;, and return the index if it is.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var binarySearch = function (array, target, start, end) {  
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+
+  var midpoint = Math.floor((start + end)/2)
+  if (array[midpoint] === target) {
+    return midpoint;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If our midpoint isn't the target, we'll now need to check the rest of our array. Remember, whether we check the left or right of the array depends on whether our midpoint is too high, or too low. This means we'll first need to make the comparison. Then, let's set up an &lt;strong&gt;if/else statement&lt;/strong&gt; to tackle the two scenarios accordingly. &lt;/p&gt;
+
+&lt;p&gt;(Note: the condition of the &lt;code&gt;else if&lt;/code&gt; is technically unnecessary - if we have done everything correctly, an &lt;code&gt;else&lt;/code&gt; statement should suffice. However, we include this for clarity.)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var binarySearch = function (array, target, start, end) {  
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+
+  var midpoint = Math.floor((start + end)/2)
+  if (array[midpoint] === target) {
+    return midpoint;
+  } else {
+    if (array[midpoint] &amp;gt; target) {
+
+    } else if (array[midpoint] &amp;lt; target) {
+
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The final step is to decide what to do in each case. We know that in both cases, &lt;strong&gt;we want to check a smaller portion of the array&lt;/strong&gt;. Perhaps a recursive call to the same function can take care of this for us. &lt;/p&gt;
+
+&lt;p&gt;Let's add &lt;strong&gt;recursive function calls, adjusting the start and end points accordingly&lt;/strong&gt;. If our midpoint was too high, we will want to check the lower half of the array, starting from our last start point, up to (but not including) the midpoint. If our midpoint was too low, we will want to check the higher half of the array, starting from after the midpoint to our last end point.&lt;/p&gt;
+
+&lt;p&gt;Lastly, we'll want to make sure that the first time the function is run, we use the entire array. Let's add in &lt;strong&gt;default values&lt;/strong&gt;, so we don't need to explicitly pass them in each time.  &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var binarySearch = function (array, target, start, end) {  
+  start = start || 0;
+  end = end || array.length-1;
+
+  if (start === end) {
+    if (array[start] === target) {
+      return start;
+    } else {
+      return -1;
+    }
+  }
+
+  var midpoint = Math.floor((start + end)/2)
+  if (array[midpoint] === target) {
+    return midpoint;
+  } else {
+    if (array[midpoint] &amp;gt; target) {
+      return binarySearch(array, target, start, midpoint-1) 
+    } else if (array[midpoint] &amp;lt; target) {
+      return binarySearch(array, target, midpoint+1, end) 
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All done! Now, each time our function recursively calls itself, we cut down on the elements we still need to check by a factor of 2. We will do this until we either have found our target, or have one element left.&lt;/p&gt;
+
+&lt;p&gt;Let's run our function with some arrays to test it out! &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;binarySearch([1, 3, 5, 6, 8], 3); // 1  
+binarySearch([1, 3, 5, 6, 8], 8); // 4  
+binarySearch([23, 24, 27, 31, 35, 39], 23); // 0  
+binarySearch([23, 24, 27, 31, 35, 39], 31); // 3  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Success!&lt;/strong&gt;&lt;/p&gt;</content:encoded></item><item><title>Blogging with Ghost and GitHub Pages: Part 1</title><description>&lt;p&gt;For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so. &lt;/p&gt;
 
 &lt;p&gt;Ghost provides an&lt;/p&gt;</description><link>http://localhost:2368/blogging-with-ghost-and-github-pages-part-1/</link><guid isPermaLink="false">527f0eda-6fd4-4879-9115-5607cb8f4905</guid><dc:creator>Anna Zhao</dc:creator><pubDate>Mon, 19 Sep 2016 08:44:03 GMT</pubDate><content:encoded>&lt;p&gt;For my initial blog post, I thought I would share how I got this site up and running - using Ghost as my blogging platform and Github pages as my (free!) hosting option. This guide might seem long, but everything should take around 15 minutes or so. &lt;/p&gt;
 
